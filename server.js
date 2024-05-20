@@ -39,9 +39,7 @@ app.get('/users', async (req, res) => {
 // connect to MongoDB
 const connectionString = process.env.MONGODB_URI;
 
-mongoose.connect(connectionString)
-.then(() => console.log('MongoDB connected'))
-.catch(err => console.log(err));
-
-const PORT = process.env.PORT || 3010;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+mongoose.connect(connectionString).then(() => {
+    app.listen(3010, () => console.log('Server running on port 3010 and connected to MongoDB'))
+})
+.catch(err => console.log('Database connection failed', err));
